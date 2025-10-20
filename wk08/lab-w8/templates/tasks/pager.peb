@@ -1,0 +1,16 @@
+<nav aria-label="Pages">
+  <ul class="pagination">
+    {% if page.page > 1 %}
+      <li><a href="/tasks?q={{ q }}&page={{ page.page-1 }}"
+             hx-get="/tasks/fragment?q={{ q }}&page={{ page.page-1 }}"
+             hx-target="#task-area" hx-push-url="true">Prev</a></li>
+    {% endif %}
+    <li>Page {{ page.page }} of {{ page.pages }}</li>
+    {% if page.page < page.pages %}
+      <li><a href="/tasks?q={{ q }}&page={{ page.page+1 }}"
+             hx-get="/tasks/fragment?q={{ q }}&page={{ page.page+1 }}"
+             hx-target="#task-area" hx-push-url="true">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
