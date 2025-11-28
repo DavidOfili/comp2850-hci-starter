@@ -1,0 +1,38 @@
+<li id="task-{{ task.id }}" class="task-edit">
+
+    <form 
+        action="/tasks/{{ task.id }}/edit"
+        method="post"
+        hx-post="/tasks/{{ task.id }}/edit"
+        hx-target="#task-{{ task.id }}"
+        hx-swap="outerHTML"
+    >
+
+        <label for="title-{{ task.id }}">Edit task</label>
+        <input 
+            id="title-{{ task.id }}"
+            name="title"
+            type="text"
+            value="{{ task.title }}"
+            required
+        >
+
+        <button type="submit">Save</button>
+
+        <!-- Cancel restores the view mode -->
+        <button 
+            type="button"
+            hx-get="/tasks/{{ task.id }}"
+            hx-target="#task-{{ task.id }}"
+            hx-swap="outerHTML"
+        >Cancel</button>
+
+        <!-- No-JS fallback -->
+        <noscript>
+            <a href="/tasks">Cancel</a>
+        </noscript>
+
+    </form>
+
+</li>
+ 

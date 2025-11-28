@@ -1,0 +1,26 @@
+<li id="task-{{ task.id }}" class="task-item">
+
+    <span class="task-title">{{ task.title }}</span>
+
+    <!-- Edit button (HTMX + fallback for no-JS) -->
+    <form 
+        action="/tasks/{{ task.id }}/edit"
+        method="get"
+        hx-get="/tasks/{{ task.id }}/edit"
+        hx-target="#task-{{ task.id }}"
+        hx-swap="outerHTML"
+        style="display: inline;"
+    >
+        <button type="submit">Edit</button>
+    </form>
+
+    <!-- Delete form (your existing delete route) -->
+    <form 
+        action="/tasks/{{ task.id }}/delete"
+        method="post"
+        style="display: inline;"
+    >
+        <button type="submit">Delete</button>
+    </form>
+
+</li> 

@@ -40,6 +40,16 @@ object TaskRepository {
         if (removed) persist()
         return removed
     }
+    
+    fun get(id: Int): Task? =
+    tasks.find { it.id == id }
+
+	fun updateTitle(id: Int, newTitle: String): Task? {
+		 val task = tasks.find { it.id == id } ?: return null
+		 task.title = newTitle
+		 persist()
+		 return task
+	}
 
     private fun persist() {
         file.writeText("id,title\n" + tasks.joinToString("\n") { "${it.id},${it.title}" })
